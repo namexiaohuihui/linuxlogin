@@ -8,7 +8,7 @@
 """
 from tkinter import *
 from tkinter.messagebox import *
-from makePopup import MakePopup
+from makeRun import MakePopup
 from InteractionProgram.loginEntry import LoginEntry
 from InteractionProgram.selectWidgets import SelectWidgets
 from MenuProgram.titleMenu import TitleMenu

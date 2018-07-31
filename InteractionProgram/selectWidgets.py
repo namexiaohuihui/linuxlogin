@@ -32,7 +32,7 @@
 '''
 from tkinter import *
 from tkinter import ttk
-from makePopup import MakePopup
+from ShowProgram.makePopup import MakePopup
 
 
 class SelectWidgets(MakePopup):
