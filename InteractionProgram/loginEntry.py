@@ -37,8 +37,9 @@ from makePopup import MakePopup
 class LoginEntry(MakePopup):
     def __init__(self, parent=None):
         Frame.__init__(self, parent)
-        self.pack(expand=YES, fill=BOTH)  # 缺少这个之后，除菜单以外的书都不会显示
+        self.pack(side=LEFT,expand=YES, fill=BOTH)  # 缺少这个之后，除菜单以外的书都不会显示
         self.systemglobal['LoginEntry'] = self
+        self.makeEntryBar()
         pass
 
     def makeEntryBar(self):

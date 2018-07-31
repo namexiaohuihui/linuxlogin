@@ -33,6 +33,8 @@
 from tkinter import *
 from tkinter.messagebox import *
 from InteractionProgram import builtSystem
+
+
 class MakePopup(Frame):
     systemglobal = {}
 
@@ -42,15 +44,20 @@ class MakePopup(Frame):
 
     def __init__(self, parent=None):
         Frame.__init__(self, parent)
+        self.config(bd=2, relieg=GROOVE)
         self.pack(expand=YES, fill=BOTH)  # 缺少这个之后，除菜单以外的书都不会显示
+        self.master.title('标题测试框')
+        self.master.iconname("图标名称")
+        pass
+
 
     def sendGift(self, *args):
         select = self.systemglobal['SelectWidgets']
         var = select.gift
         entrie = self.systemglobal['LoginEntry'].entrie
-        if var.get() in self.countrycodes:                                   # 判断目录是否选中
-            username = entrie[self.filedas[0]].get()                         # 读取当前输入的账号
-            password = entrie[self.filedas[1]].get()                         # 读取当前输入的密码
+        if var.get() in self.countrycodes:  # 判断目录是否选中
+            username = entrie[self.filedas[0]].get()  # 读取当前输入的账号
+            password = entrie[self.filedas[1]].get()  # 读取当前输入的密码
             print("账号密码:", username, password)
             if username and password:
                 select.sendGifts(username, password)
@@ -72,8 +79,33 @@ class MakePopup(Frame):
     def menuQuit(self):
         builtSystem.menuQuit()
 
+
+demoModules = ['TitleMenu', 'LoginEntry', 'SelectWidgets']
+parts = []
+
+
+def addCpmponents(root):
+    for demo in demoModules:
+        module = __import__(demo)
+        part = module.Demo(root)
+        parts.append(part)
+
+
+def dumpState():
+    for part in parts:
+        print(part.__module__ + ':', end=' ')
+        if hasattr(part,'report'):
+            part.report()
+        else:
+            print('none')
+
 if __name__ == '__main__':
+    # root = Tk()
+    # from menuDome2 import NewMenuDemo
+    #
+    # NewMenuDemo(root)
+    # root.mainloop()
     root = Tk()
-    from menuDome2 import NewMenuDemo
-    NewMenuDemo(root)
+    Button(root,text = 'ss',command = dumpState).pack(fill = X)
+    addCpmponents(root)
     root.mainloop()

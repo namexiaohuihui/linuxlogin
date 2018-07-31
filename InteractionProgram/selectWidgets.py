@@ -35,12 +35,12 @@ from tkinter import ttk
 from makePopup import MakePopup
 
 
-
 class SelectWidgets(MakePopup):
     def __init__(self, parent=None):
         Frame.__init__(self, parent)
         self.pack(expand=YES, fill=BOTH)  # 缺少这个之后，除菜单以外的书都不会显示
         self.systemglobal['SelectWidgets'] = self
+        self.makeWidgetsRadio()
         pass
 
     def makeWidgetsRadio(self):
@@ -64,9 +64,9 @@ class SelectWidgets(MakePopup):
         row = 1
         for key in self.countrycodes:
             ttk.Radiobutton(c, text=key, command=self.onPress,
-                        variable=self.gift,
-                        value=key).grid(column=1, row=row, sticky=W, padx=20)
-            row +=1
+                            variable=self.gift,
+                            value=key).grid(column=1, row=row, sticky=W, padx=20)
+            row += 1
         send = ttk.Button(c, text='Send Gift', command=self.sendGift, default='active')
         self.sentlbl = ttk.Label(c, textvariable=self.sentmsg, anchor='center')
         self.status = ttk.Label(c, textvariable=self.statusmsg, anchor=W)
@@ -97,15 +97,15 @@ class SelectWidgets(MakePopup):
         self.showPopulation()
         pass
 
-    def showPopulation(self,*args):
+    def showPopulation(self, *args):
         idxs = self.lbox.curselection()
         if len(idxs) == 1:
             idx = int(idxs[0])
             name = self.countrynames[idx]
-            self.statusmsg.set("The population of %s (%s)" % (name,  self.gift.get()))
+            self.statusmsg.set("The population of %s (%s)" % (name, self.gift.get()))
         self.sentmsg.set('')
 
-    def sendGifts(self,*args):
+    def sendGifts(self, *args):
         idxs = self.lbox.curselection()
         if len(idxs) == 1:
             idx = int(idxs[0])
@@ -113,7 +113,7 @@ class SelectWidgets(MakePopup):
             # Gift sending left as an exercise to the reader
             if len(args) == 0:
                 name = self.countrynames[idx]
-                self.sentmsg.set("Sent %s to leader of %s" % (name,  self.gift.get()))
+                self.sentmsg.set("Sent %s to leader of %s" % (name, self.gift.get()))
             if len(args) == 1:
                 self.sentmsg.set(args[0])
             if len(args) == 2:

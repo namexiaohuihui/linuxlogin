@@ -39,6 +39,7 @@ class TitleMenu(MakePopup):
         Frame.__init__(self, parent)
         self.pack(expand=YES, fill=BOTH)  # 缺少这个之后，除菜单以外的书都不会显示
         self.systemglobal['TitleMenu'] = self
+        self.makeMenuBar()
 
     def makeMenuBar(self):
         self.menubar = Menu(self.master)
