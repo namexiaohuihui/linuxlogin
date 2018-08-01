@@ -31,6 +31,14 @@
 @desc:
 '''
 from tkinter import *
+import os
+import sys
+# 获取项目路径下的目录
+property_path = r'E:\\linuxlogin'
+os.chdir(property_path)
+# 将项目路径保存
+sys.path.append(property_path)
+
 from InteractionProgram import editTextLogin
 from InteractionProgram import selectWidgets
 from MenuProgram import  titleMenu
