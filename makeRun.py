@@ -39,10 +39,11 @@ os.chdir(property_path)
 # 将项目路径保存
 sys.path.append(property_path)
 
-from InteractionProgram import editTextLogin
-from InteractionProgram import selectWidgets
-from MenuProgram import  titleMenu
-demoModules = [titleMenu.TitleMenu, editTextLogin.EditTextLogin, selectWidgets.SelectWidgets]
+from InteractionProgram.editTextLogin import EditTextLogin
+from InteractionProgram.selectWidgets import SelectWidgets
+from InteractionProgram.simpleEditor import SimpleEditor
+from MenuProgram.titleMenu import  TitleMenu
+demoModules = [TitleMenu, EditTextLogin,SelectWidgets,SimpleEditor]
 parts = []
 
 

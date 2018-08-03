@@ -31,13 +31,20 @@
 @desc:
 '''
 from tkinter import *
-from makePopup import MakePopup
+import os
+import sys
+# 获取项目路径下的目录
+files_path = 'E:\\linuxlogin'
+os.chdir(files_path)
+# 将项目路径保存
+sys.path.append(files_path)
+from ShowProgram.makePopup import MakePopup
 
 
 class LoginEntry(MakePopup):
     def __init__(self, parent=None):
         Frame.__init__(self, parent)
-        self.pack(side=LEFT,expand=YES, fill=BOTH)  # 缺少这个之后，除菜单以外的书都不会显示
+        self.pack(side=TOP,expand=YES, fill=BOTH)  # 缺少这个之后，除菜单以外的书都不会显示
         self.systemglobal['LoginEntry'] = self
         self.makeEntryBar()
         pass

@@ -34,6 +34,11 @@ import os
 from tkinter import *
 from tkinter.messagebox import *
 from ShowProgram.makePopup import MakePopup
+from ShowProgram.makePopup import MakePopup
+import toolsPath
+photoFiles = ('kaiguan.png', 'riji.png', 'xingqiu.png')
+CUR_PATH = toolsPath.FILES_PATH
+
 class TitleMenu(MakePopup):
     def __init__(self, parent=None):
         Frame.__init__(self, parent)
@@ -72,25 +77,17 @@ class TitleMenu(MakePopup):
         :return:
         '''
         # photoFiles = ('ameng.gif','fengc.gif')
-        photoFiles = ('开关.png', '日记.png', '星球.png')
+        # photoFiles = ('开关.png', '日记.png', '星球.png')
         pulldown = Menu(self.menubar)
         self.photoObjs = []
-        CUR_PATH = os.path.dirname(os.path.realpath(__file__))
+        # CUR_PATH = os.path.dirname(os.path.realpath(__file__))
         for filename in photoFiles:
             case_path = os.path.join(os.path.join(CUR_PATH, 'gifs'), filename)
+            print("文件所在位置", case_path)
             img = PhotoImage(file=case_path)
             pulldown.add_command(image=img, command=self.notdone)
             self.photoObjs.append(img)
         self.menubar.add_cascade(label='Image', underline=0, menu=pulldown)
-
-    # def greeting(self):
-    #     builtSystem.greeting('或得', '啥玩意')
-    #
-    # def notdone(self):
-    #     builtSystem.notdone('没找到信息', '你这是干嘛')
-    #
-    # def menuQuit(self):
-    #     builtSystem.menuQuit()
 
 if __name__ == '__main__':
     title = TitleMenu()

@@ -10,7 +10,7 @@ from ShowProgram.makePopup import MakePopup
 class EditTextLogin(MakePopup):
     def __init__(self, parent=None):
         Frame.__init__(self, parent)
-        self.pack(side=TOP,expand=YES, fill=BOTH)  # 缺少这个之后，除菜单以外的书都不会显示
+        self.pack(side=TOP,expand=YES, fill=BOTH)  # 缺失path之后，该frame就不会显示出来
         self.systemglobal['LoginEntry'] = self
         self.makeEntryBar()
         pass

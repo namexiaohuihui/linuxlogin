@@ -1,12 +1,22 @@
 """
 same, but use composition (embedding/attachment) instead of inheritance
 """
+import os
+import sys
+# 获取项目路径下的目录
+files_path = 'E:\\linuxlogin'
+os.chdir(files_path)
+# 将项目路径保存
+sys.path.append(files_path)
+# import HTMLTestReportCN
 
+# 获取当前文件所在目录
+CUR_PATH = os.path.dirname(os.path.realpath(__file__))
 from tkinter import *
 from tkinter.simpledialog import askstring
 from tkinter.filedialog   import asksaveasfilename
-from quitter  import Quitter
-from scrolledtext import ScrolledText                     # here, not Python's
+from DemoTest.quitter  import Quitter
+from DemoTest.scrolledtext import ScrolledText                     # here, not Python's
 
 class SimpleEditor(Frame):                                # see PyEdit for more
     def __init__(self, parent=None, file=None):
@@ -58,4 +68,5 @@ if __name__ == '__main__':
     if len(sys.argv) > 1:
         SimpleEditor(file=sys.argv[1]).mainloop()    # filename on command line
     else:
+        # SimpleEditor().mainloop()                    # or not: start empty
         SimpleEditor(file=r'C:\Users\70486\Desktop\9780596158118\PP4E-Examples-1.4\Examples\PP4E\Gui\Tour\scrolledtext.py').mainloop()                    # or not: start empty
